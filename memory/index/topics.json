@@ -1,0 +1,16 @@
+{
+  "_comment": "This is the global topics index. Update immediately after creating/updating any memory note.",
+  "_usage": "Organize notes by subject area. Each topic has a description and list of note IDs.",
+  "_example": {
+    "System Architecture": {
+      "description": "Core architectural patterns and designs",
+      "notes": ["sem-001", "sem-002"]
+    },
+    "Task Sessions": {
+      "description": "Historical records of task executions",
+      "notes": ["ep-001", "ep-002", "ep-003"]
+    }
+  },
+  "topics": {},
+  "updated": "YYYY-MM-DD"
+}

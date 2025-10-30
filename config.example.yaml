@@ -1,0 +1,156 @@
+# Claude Code Memory System - Project Configuration
+# Copy this file to config.yaml and fill in your project details
+
+# ===========================
+# PROJECT INFORMATION
+# ===========================
+project:
+  name: "YourProjectName"          # Human-readable project name
+  type: "Project Type"             # e.g., "Java monorepo", "Python microservices", "React app"
+  description: "Brief description of what this project does and its main goals"
+
+# ===========================
+# LANGUAGE PREFERENCES
+# ===========================
+language:
+  user_language: "English"         # Language for final outputs (docs, reports, presentations)
+                                   # Supported: "English", "Chinese", "Japanese", "Korean", etc.
+
+  think_language: "English"        # Language for internal reasoning and technical analysis
+                                   # Recommended: Always use "English" for best technical accuracy
+
+# ===========================
+# DIRECTORY PATHS
+# ===========================
+paths:
+  base_dir: "claude"               # Directory name for Claude system (usually "claude")
+  codebase: "/path/to/your/code"   # Absolute path to your codebase root
+
+  # Optional: Override default subdirectories (uncomment if needed)
+  # memory: "claude/memory"
+  # prompt: "claude/prompt"
+  # result: "claude/result"
+  # temp: "claude/temp"
+
+# ===========================
+# PROJECT OBJECTIVES
+# ===========================
+# List main goals for the AI agent (can be updated as project evolves)
+objectives:
+  - objective: "Analyze and document the core architecture"
+    memory_check: "Query semantic notes for 'architecture', 'design', 'patterns'"
+    memory_update: "Create semantic notes for architectural discoveries"
+
+  - objective: "Identify and document potential defects"
+    memory_check: "Check episodic notes for previous defect analysis"
+    memory_update: "Create semantic notes for defect patterns and fixes"
+
+  # Add more objectives as needed
+  # - objective: "..."
+  #   memory_check: "..."
+  #   memory_update: "..."
+
+# ===========================
+# PROJECT ASSUMPTIONS & SCOPE
+# ===========================
+# Document key facts about the project that the AI should know
+assumptions:
+  - "The repository uses <build tool> (e.g., Maven, Gradle, npm)"
+  - "The primary programming language is <language>"
+  - "The main modules to focus on are: <module1>, <module2>"
+  # Add project-specific assumptions
+
+# ===========================
+# DOMAIN-SPECIFIC SETTINGS
+# ===========================
+domain:
+  # Key terminology to maintain consistency
+  terms:
+    - "<DomainTerm1>: Definition"
+    - "<DomainTerm2>: Definition"
+
+  # Evidence requirements for this domain
+  evidence:
+    - "All claims must include code quotes with file:line references"
+    - "Architecture claims must cite design docs or authoritative sources"
+    # Add domain-specific evidence requirements
+
+  # External knowledge sources
+  external_sources:
+    - "Project wiki: <url>"
+    - "API documentation: <url>"
+    - "Design docs: <path>"
+    # Add authoritative sources
+
+# ===========================
+# TASK CONFIGURATION
+# ===========================
+tasks:
+  # Enable/disable features
+  use_task_specific_indexes: true  # Build optimization indexes for large tasks
+  use_incremental_work: true       # Use checkpointing for tasks >5000 lines
+
+  # Context budgets
+  max_context_per_step: 2000       # Max lines of context per incremental step
+  max_task_context: 10000          # Max total context for entire task
+
+  # Memory hygiene
+  hygiene_cycle_frequency: 5       # Run memory hygiene every N tasks
+
+# ===========================
+# OUTPUT PREFERENCES
+# ===========================
+output:
+  format: "markdown"               # Output format (currently only "markdown")
+  include_diagrams: true           # Include Mermaid diagrams in outputs
+  diagram_types:
+    - "flowchart"                  # For processes and pipelines
+    - "sequence"                   # For interactions
+    - "class"                      # For architecture
+
+  # Evidence format
+  code_reference_format: "file:line"  # How to reference code (e.g., "file:line", "file:line-range")
+
+# ===========================
+# GIT INTEGRATION
+# ===========================
+git:
+  ai_git_operations: false         # NEVER allow AI to perform git operations
+                                   # Version control is user's responsibility
+
+  # Directories to ignore in git (add to .gitignore)
+  ignore_patterns:
+    - "claude/temp/"               # Temporary working directory
+    # - "claude/memory/semantic/"  # Uncomment to keep memory private
+    # - "claude/memory/episodic/"
+
+# ===========================
+# ADVANCED SETTINGS
+# ===========================
+advanced:
+  # Memory system tuning
+  max_tags: 100                    # Alert if tags exceed this number
+  max_topics: 50                   # Alert if topics exceed this number
+  max_cross_refs: 10               # Max cross-references per note
+
+  # Performance targets
+  target_context_reduction: 0.80   # Aim for 80% context reduction (0.80 = 80%)
+  target_index_lookup_time: 1.0    # Target index lookup time in seconds
+
+# ===========================
+# CUSTOMIZATION
+# ===========================
+# Add any project-specific settings here
+custom:
+  # Example: specific frameworks or tools used
+  # frameworks:
+  #   - "Spring Boot"
+  #   - "React"
+
+  # Example: coding standards
+  # coding_standards:
+  #   - "Google Java Style Guide"
+
+  # Example: testing requirements
+  # testing:
+  #   min_coverage: 80

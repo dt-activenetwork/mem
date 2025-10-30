@@ -1,0 +1,11 @@
+{
+  "_comment": "This is the global tags index. Update immediately after creating/updating any memory note.",
+  "_usage": "Add note IDs to tag arrays. Use lowercase, hyphen-separated tag names.",
+  "_example": {
+    "architecture": ["sem-001", "sem-002"],
+    "query-api": ["sem-004", "ep-003"],
+    "task-completion": ["ep-001", "ep-002", "ep-003"]
+  },
+  "tags": {},
+  "updated": "YYYY-MM-DD"
+}
