@@ -8,6 +8,13 @@
 - Documentation creation workflows
 - Maintenance procedures
 - Troubleshooting playbooks
+- **Context overflow prevention procedures** ⚠️
+
+## Core Procedures (Always Available)
+
+- **`context-overflow-checkpointing.md`**: How to checkpoint work when context >70%, enable seamless resume after `/clear`
+- **`memory-first-workflow.md`**: Memory-driven work approach
+- **`memory-system-operations.md`**: How to use the memory system
 
 **File naming**: `<domain>-<verb>-<slug>.md`
 Example: `memory-system-operations.md`, `frontend-analysis-workflow.md`

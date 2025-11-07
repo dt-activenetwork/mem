@@ -59,6 +59,112 @@ This system implements a **memory-driven, task-oriented workflow** that enables 
 
 ---
 
+## 🚨 CRITICAL: Context Overflow Prevention Protocol
+
+**ABSOLUTE REQUIREMENT: NEVER let context capacity run out during work.**
+
+### Context Capacity Monitoring
+
+**BEFORE starting any significant work**, check your context usage:
+- If context is **>70% full**: You MUST prepare for potential overflow
+- If context is **>80% full**: You MUST checkpoint NOW before continuing
+
+### Checkpointing Protocol (When Context High)
+
+When you detect context capacity approaching limits:
+
+```
+┌─────────────────────────────────────────────────────┐
+│ STEP 1: IMMEDIATE CHECKPOINT                        │
+│ ─────────────────────────────────────────────────── │
+│ 1. PAUSE current work immediately                  │
+│ 2. Save ALL current progress to memory:            │
+│    - Create episodic note with EXACT state         │
+│    - Document: what was done, what's next          │
+│    - List: files modified, decisions made          │
+│    - Save: partial results, intermediate data      │
+│ 3. Update all indexes (tags.json, topics.json)     │
+│ 4. Create "resume plan" in episodic note           │
+└─────────────────────────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────────────────────────┐
+│ STEP 2: INFORM USER                                 │
+│ ─────────────────────────────────────────────────── │
+│ Tell user:                                          │
+│ "⚠️  Context capacity at XX%. To prevent overflow, │
+│  I've saved current progress to memory.             │
+│                                                      │
+│  Please run: /clear                                 │
+│                                                      │
+│  After clearing, I will resume from the checkpoint  │
+│  in memory and continue the work."                  │
+└─────────────────────────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────────────────────────┐
+│ STEP 3: RESUME AFTER /clear                         │
+│ ─────────────────────────────────────────────────── │
+│ 1. Read the checkpoint episodic note               │
+│ 2. Read the "resume plan"                           │
+│ 3. Verify all context is restored from memory      │
+│ 4. Continue work from exact checkpoint state       │
+│ 5. Update episodic note: "Resumed after /clear"    │
+└─────────────────────────────────────────────────────┘
+```
+
+### Checkpoint Content Requirements
+
+A valid checkpoint MUST include:
+
+```markdown
+# Episodic Note: [Task Name] - Checkpoint
+
+## Current State
+- **Phase**: [Planning/Implementation/Testing/etc]
+- **Completed**: [List what's done]
+- **In Progress**: [Exact current step]
+- **Not Started**: [What remains]
+
+## Files Modified
+- file1.ts: [what was changed]
+- file2.md: [what was changed]
+
+## Decisions Made
+1. Decision: [description]
+   Rationale: [why]
+
+## Next Steps (Resume Plan)
+1. [First action after /clear]
+2. [Second action]
+3. ...
+
+## Context Data
+[Any intermediate data, partial results, or state needed to resume]
+```
+
+### Critical Rules
+
+- ❌ **NEVER** continue working when context >80% without checkpointing
+- ❌ **NEVER** lose work due to context overflow
+- ❌ **NEVER** ask user to repeat instructions after /clear
+- ✅ **ALWAYS** save state to memory before context fills
+- ✅ **ALWAYS** be able to resume from checkpoint with zero context
+- ✅ **ALWAYS** inform user when checkpointing is needed
+
+### When to Checkpoint
+
+Checkpoint if ANY of these conditions:
+- Context usage >80%
+- Working on multi-step task that won't fit in remaining context
+- About to analyze large files
+- Starting a long-running operation
+- User's task requires multiple iterations
+
+**Memory system exists to enable seamless work continuation. USE IT.**
+
+---
+
 ## 🚨 MANDATORY: Memory-First Operating Principle
 
 **THIS IS THE FOUNDATION OF ALL WORK. NEVER SKIP THIS.**
