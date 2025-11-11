@@ -503,6 +503,67 @@ Every checkpoint MUST include in episodic note:
 
 ---
 
+## System Environment
+
+**Operating System**: {{OS_NAME}} ({{OS_TYPE}})
+**Version**: {{OS_VERSION}}
+**Package Manager**: {{PACKAGE_MANAGER}}
+**User Privileges**: {{USER_PRIVILEGES}}
+
+### Package Installation
+
+When installing system packages or dependencies, use the following command format:
+
+```bash
+{{INSTALL_COMMAND_EXAMPLE}}
+```
+
+**Important Notes**:
+- The AI Agent should use `{{PACKAGE_MANAGER}}` for package installation recommendations
+- Install prefix: `{{INSTALL_PREFIX}}` (use this before package manager commands if needed)
+- Running as root: {{IS_ROOT}}
+- Sudo available: {{HAS_SUDO}}
+
+When suggesting package installations to the user:
+1. ✅ Use the package manager specified above ({{PACKAGE_MANAGER}})
+2. ✅ Include the correct install prefix if applicable
+3. ✅ Verify package names are correct for this OS/distribution
+4. ❌ Do NOT assume a different package manager
+5. ❌ Do NOT run installation commands automatically (always suggest to user)
+
+---
+
+## Development Environment
+
+This section describes the development tools available in the current environment. Claude Code has powerful capabilities for Python and Node.js development, and the following tools are ready to use.
+
+{{DEV_TOOLS_SECTION}}
+
+### Important Guidelines for AI Agent
+
+**When suggesting code or tool usage:**
+
+1. **Use Detected Tools**
+   - ✅ Only suggest tools that are marked as "available" above
+   - ✅ Use the specified package managers and versions
+   - ❌ Do NOT suggest tools that are not detected
+
+2. **Python Development**
+   - Use {{PYTHON_PACKAGE_MANAGER}} for environment management
+   - Follow Python {{PYTHON_VERSION}} syntax and features
+   - {{PYTHON_VENV_GUIDANCE}}
+
+3. **Node.js Development**
+   - Use {{NODE_PACKAGE_MANAGER}} for package management
+   - Use {{NODE_RUN_COMMAND}} to run scripts
+   - Follow Node.js {{NODE_VERSION}} APIs and features
+
+4. **Tool Installation Suggestions**
+   - If a required tool is not available, suggest installation using the system package manager
+   - Provide clear installation instructions specific to this environment
+
+---
+
 ## Performance Metrics
 
 ### Expected System Performance
